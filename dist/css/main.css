@@ -189,6 +189,19 @@ main {
       border-color: #56bc81;
       transition: all 0.5s ease-out; }
 
+.boxes {
+  padding: 5rem; }
+  .boxes .sm-boxes {
+    padding: 1rem;
+    font-weight: 600; }
+    .boxes .sm-boxes:hover {
+      background: #56bc81;
+      color: #000; }
+      .boxes .sm-boxes:hover span {
+        color: #000; }
+  .boxes .text-secondary {
+    font-size: 1.2rem; }
+
 .btn, .btn-dark, .btn-light {
   display: block;
   padding: 0.5rem 1rem;

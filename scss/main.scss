@@ -33,7 +33,6 @@ h1, h2, h3 {
 	&.about-heading {
 		margin-bottom: 2rem;
 		padding: 0.2rem 3.5rem;
-		// background: rgba(lighten($primary-color, 2), 2);
 	}
 }
 
@@ -54,7 +53,6 @@ header {
 
 main {
 	padding: 4rem;
-	//height: 100%;
 	min-height: calc(100vh - 60px);
 
 	.icons {
@@ -133,6 +131,28 @@ main {
 			border-color: $secondary-color;
 			@include easeOut;
 		}
+	}
+}
+
+// Contact Page 
+.boxes {
+	padding: 5rem;
+
+	.sm-boxes {
+		padding: 1rem;
+		font-weight: 600;
+
+		&:hover {
+			background: $secondary-color;
+			color: set-text-color($secondary-color);
+			span {
+				color: set-text-color($secondary-color);
+			}
+		}
+	}
+
+	.text-secondary {
+		font-size: 1.2rem;
 	}
 }
 
