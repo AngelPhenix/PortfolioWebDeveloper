@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "Responsive Portfolio Website",
   "main": "index.js",
+  "homepage": "https://AngelPhenix.github.io/PortfolioWebDeveloper",
   "scripts": {
-    "sass": "node-sass -w scss/ -o dist/css --recursive"
+    "sass": "node-sass -w scss/ -o dist/css --recursive",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Jérémy Mattausch",
   "license": "MIT",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "i": "^0.3.6",
     "node-sass": "^4.11.0",
     "npm": "^6.5.0"
