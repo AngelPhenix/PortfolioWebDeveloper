@@ -29,6 +29,12 @@ h1, h2, h3 {
 		padding: 0.2rem 1rem;
 		background: rgba(lighten($primary-color, 2), 0.25);
 	}
+
+	&.about-heading {
+		margin-bottom: 2rem;
+		padding: 0.2rem 3.5rem;
+		// background: rgba(lighten($primary-color, 2), 2);
+	}
 }
 
 a {
