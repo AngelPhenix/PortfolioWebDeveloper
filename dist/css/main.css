@@ -56,14 +56,14 @@
       height: 250px;
       background: url("../img/portrait.jpg");
       border-radius: 50%;
-      border: solid 3px #56bc81; }
+      border: solid 3px #B50346; }
   .menu .nav-item {
     transform: translate3d(600px, 0, 0);
     transition: all 0.5s ease-out; }
     .menu .nav-item.show {
       transform: translate3d(0, 0, 0); }
     .menu .nav-item.current > a {
-      color: #56bc81; }
+      color: #B50346; }
   .menu .nav-link {
     display: inline-block;
     position: relative;
@@ -75,7 +75,7 @@
     text-decoration: none;
     transition: all 0.5s ease-out; }
     .menu .nav-link:hover {
-      color: #56bc81; }
+      color: #B50346; }
 
 .nav-item:nth-child(1) {
   transition-delay: 0.1s; }
@@ -136,7 +136,7 @@ header {
   width: 100%; }
 
 .text-secondary {
-  color: #56bc81; }
+  color: #B50346; }
 
 main {
   padding: 4rem;
@@ -146,7 +146,7 @@ main {
     main .icons a {
       padding: 0.4rem; }
       main .icons a:hover {
-        color: #56bc81;
+        color: #B50346;
         transition: all 0.5s ease-out; }
   main#home {
     overflow: hidden; }
@@ -162,7 +162,7 @@ main {
     grid-area: bioimage;
     margin: auto;
     border-radius: 50%;
-    border: #56bc81 3px solid; }
+    border: #B50346 3px solid; }
   .about-info .bio {
     grid-area: bio;
     font-size: 1.5rem; }
@@ -175,7 +175,7 @@ main {
   .about-info .job {
     background: #2e2b31;
     padding: 0.5rem;
-    border-bottom: #56bc81 5px solid; }
+    border-bottom: #B50346 5px solid; }
 
 .projects {
   display: grid;
@@ -186,7 +186,7 @@ main {
     border: 3px #fff solid; }
     .projects img:hover {
       opacity: 0.45;
-      border-color: #56bc81;
+      border-color: #B50346;
       transition: all 0.5s ease-out; }
 
 .boxes {
@@ -195,10 +195,10 @@ main {
     padding: 1rem;
     font-weight: 600; }
     .boxes .sm-boxes:hover {
-      background: #56bc81;
-      color: #000; }
+      background: #B50346;
+      color: #fff; }
       .boxes .sm-boxes:hover span {
-        color: #000; }
+        color: #fff; }
   .boxes .text-secondary {
     font-size: 1.2rem; }
 
@@ -208,8 +208,8 @@ main {
   border: 0;
   margin-bottom: 0.3rem; }
   .btn:hover, .btn-dark:hover, .btn-light:hover {
-    background: #56bc81;
-    color: #000; }
+    background: #B50346;
+    color: #fff; }
 
 .btn-dark {
   background: black;
