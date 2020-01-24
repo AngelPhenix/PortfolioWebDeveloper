@@ -1,0 +1,143 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+	background: #181818;
+}
+
+/************************** USER INPUT & BUTTON ****************************/
+form {
+	width: 50%;
+	margin: 30px auto;
+	border-radius: 5px;
+	padding: 20px;
+	padding-right: 45px;
+	background: black;
+	border: 1px solid blue
+}
+
+#task_error {
+	color: red;
+	margin: 0px 0px 10px 0px;
+}
+
+#task_added {
+	color: green;
+	margin: 0px 0px 10px 0px;
+}
+
+#task_error, #task_added {
+	text-align: center;
+	text-decoration: underline;
+}
+
+#task_input {
+	width: 100%;
+	padding: 5px;
+	border: 1px solid blue
+}
+
+#task_button {
+	width: 100%;
+	background: black;
+	color: blue;
+	border: 1px solid blue;
+	border-radius: 5px;
+	padding:10px 30px;
+	margin: 20px 10px 0px 10px;
+	align-items: center
+}
+
+#task_button:hover {
+	cursor: pointer;
+	color: #515dff;
+	background: #00212d;
+}
+
+
+
+
+/********************************* TASKS *********************************/
+#big_container div {
+	color: #bec4b6;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+
+.head {
+	font-weight: 600;
+}
+
+.done_button {
+	display:inline-block;
+	color:blue;
+	padding:5px 20px;
+	text-decoration:none;
+}
+
+.delete_button {
+	color:red;
+	text-decoration:none;
+	padding:6px 8px;
+	margin: 0px 5px;
+}
+
+.delete_button:hover {
+	-webkit-box-shadow:inset 0px 0px 0px 1px red;
+    -moz-box-shadow:inset 0px 0px 0px 1px red;
+    box-shadow:inset 0px 0px 0px 1px red;
+	color: red;
+}
+
+.database_container .done_button:hover {
+	-webkit-box-shadow:inset 0px 0px 0px 1px #56b760;
+    -moz-box-shadow:inset 0px 0px 0px 1px #56b760;
+    box-shadow:inset 0px 0px 0px 1px #56b760;
+	color: #56b760;
+}
+
+.database_container_2 .done_button:hover {
+	-webkit-box-shadow:inset 0px 0px 0px 1px #ff6b6b;
+    -moz-box-shadow:inset 0px 0px 0px 1px #ff6b6b;
+    box-shadow:inset 0px 0px 0px 1px #ff6b6b;
+	color: #ff6b6b;
+}
+
+.done_button, .delete_button {
+	background: #ad145c;
+	border-radius: 5px;
+	color: white;
+}
+
+.done_button:hover, .delete_button:hover {
+	background: #600832;
+}
+
+.database_container, .database_container_2 {
+	width: 55%;
+	margin: 0px auto;
+	border-bottom: 1px solid #4f4f4f;
+	padding: 10px 0px;
+}
+
+#clear {
+	margin: 30px 0px;
+}
+
+.database_container_2 {
+	background: #173a00;
+}
+
+#task_title {
+	margin-left: 5px;
+	word-wrap: break-word;
+	max-width: 70%;
+}
+
+.database_container_2 #task_title {
+	text-decoration: line-through;
+}
