@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^views/article-([0-9]+)$ views/article.php?id=$1
+RewriteRule ^views/tag-([A-Za-z]+)$ views/tagged.php?tag=$1
+RewriteRule ^views/([A-Za-z]+)$ views/$1.php

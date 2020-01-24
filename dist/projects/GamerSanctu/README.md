@@ -1,0 +1,2 @@
+Ce projet est privé et tout ce qui le concerne est sous license protégé. 
+Il n'est disponible à la vue du public que pour le simple fait de montrer le code à de possibles employeurs qui souhaiteraient pouvoir fouiller un peu dans la base de donnée.
