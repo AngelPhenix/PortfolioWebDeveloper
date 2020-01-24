@@ -1,0 +1,148 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: #1a1a1a;
+}
+
+
+
+
+
+
+/************************ INDEX **************************/
+.consoles a {
+	display: block;
+	width: 75%;
+	background-color: black;
+	padding: 25px 0px;
+	margin: 15px auto;
+	text-decoration: none;
+	border-radius: 50px;
+	text-align: center;
+	color: white;
+}
+
+.consoles a:hover {
+	color: black;
+	background-color: #bebebe;
+}
+
+
+
+
+
+/************************ GAME LIST **************************/
+.game_container {
+	width: 60%;
+	margin: 10px auto;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: orange;
+	font-size: 25px;
+	border-radius: 5px;
+}
+
+.games {
+	width: 90%;
+	margin: 10px auto;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: orange;
+	font-size: 25px;
+	border-radius: 5px;
+}
+
+.delete_games {
+	width: 5%;
+	text-decoration: none;
+	color: orange;
+	font-size: 35px;
+	background-color: #323232;
+	border-radius: 15px;
+	text-align: center;
+}
+
+.games:hover, .delete_games:hover {
+	color: white;
+}
+
+.games p {
+	margin: 0px auto;
+}
+
+.games img {
+	width: 10%;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+.games:nth-child(2n-1){
+	background-color: #323232;
+}
+
+.games:nth-child(2n-2){
+	background-color: #2a2a2a;
+}
+
+
+
+
+/************************ ACHIEVEMENT LIST **************************/
+.achievements {
+	display: flex;
+	width: 75%;
+	margin: 10px auto;
+	align-items: center;
+	cursor: pointer;
+}
+
+.achievements_container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.achievements_container .p1 {
+	margin-bottom: 10px;
+	color: orange;
+}
+
+.achievements_container .p2 {
+	color: #4291ed;
+}
+
+p.guide {
+	font-size: 1.03em;
+	line-height: 1.5;
+	color: #02a229;
+	margin: 0 auto;
+	background-color: black;
+	width: 70%;
+	text-align: center;
+	padding: 20px;
+}
+
+.achievements:nth-child(2n-1){
+	background-color: #323232;
+}
+
+/************************ ADD_GAME **************************/
+#comeback {
+	color: orange;
+	text-decoration: none;
+	display: inline-block;
+	text-align: center;
+	background-color: #323232;
+	margin-top: 5px;
+	padding: 8px;
+}
+
+#comeback:hover {
+	color: white;
+}
