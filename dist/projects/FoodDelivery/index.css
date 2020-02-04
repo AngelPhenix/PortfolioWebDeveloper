@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+:root {
+    --main_color: rgb(255, 168, 38);
+}
+
+/***************** REINITIALIZATION ***************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/***************** NAVIGATION BAR ***************/
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 55px;
+    background: #303030;
+    position: fixed;
+    z-index: 1;
+}
+
+nav span {
+    position: absolute;
+    top: 30%;
+    left: 45px;
+    color: rgba(255,255,255, 0.8);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 35px;
+    position: relative;
+    border-bottom: 2px solid transparent;
+    transition: 250ms;
+}
+
+nav a:hover {
+    color: var(--main_color);
+    border-bottom: 2px solid rgba(255, 168, 38, 0.5);
+}
+
+
+
+/***************** HOME BLOCK ***************/
+#home {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(img/food03.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+#home h1 {
+    font-weight: 100;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    width: 50%;
+    text-align: center;
+    font-size: 40px;
+    margin-top: -150px; 
+}
+
+#home button {
+    width: 150px;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: 500;
+    background: #cf7f08;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 25px;
+    padding: 5px;
+    color: white;
+    font-size: 15px;
+    transition: 250ms;
+    letter-spacing: 2px;
+    outline: none;
+}
+
+#home button:hover {
+    color: #000;
+    border: 3px solid #cf5e08;
+}
+
+
+
+/***************** OFFER BLOCK ***************/
+#offer {
+    width: 100%;
+    height: 95vh;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#offer_titlebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#offer_titlebar h2 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 40px;
+    margin: 50px 0px 25px;
+    border-bottom: 3px solid var(--main_color);
+    width: 20%;
+}
+
+#offer_titlebar .offer-text {
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    text-align: center;
+    width: 40%;
+}
+
+#offer_main {
+    width: 80%;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#offer_img {
+    width: 450px;
+}
+
+#offer_main img {
+    width: 100%;
+}
+
+#offer_description {
+    width: 40%;
+    margin: 40px auto;
+}
+
+#offer_description h3,
+#offer_description h4 {
+    border-bottom: 1px solid var(--main_color);
+}
+
+#offer_description p {
+    margin-bottom: 32px;
+}
+
+
+
+/***************** EXPERTS BLOCK ***************/
+#experts {
+    height: 60vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: black;
+    color: white;
+    overflow: hidden;
+}
+
+#experts .card {
+    width: 300px;
+    position: relative;
+    margin-top: 100px;
+    padding: 50px;
+    text-align: center;
+    border: 1px solid rgba(255, 168, 38, 0.3);
+    border-radius: 15px;
+    height: 300px;
+}
+
+#experts .card img {
+    position: absolute;
+    width: 100px;
+    border-radius: 50%;
+    top: -50px;
+    left: 104px;
+}
+
+#experts .card h5 {
+    color: var(--main_color);
+}
+
+#experts .card p {
+    margin-top: 15px;
+}
+
+
+
+/***************** SERVICES BLOCK ***************/
+#services {
+    height: 75vh;
+    background: rgb(20, 20, 20);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+.one, .two, .three {
+    width: 250px;
+    text-align: center;
+}
+
+#services .fas {
+    font-size: 45px;
+    color: var(--main_color);
+    margin: 15px 0;
+}
+
+#services h3 {
+    margin-bottom: 45px;
+}
+
+
+
+/***************** CONTACT BLOCK ***************/
+#contact {
+    width: 100%;
+    height: 45vh;
+    background: #fff;
+    text-align: center;
+}
+
+#contact h1 {
+    width: 17%;
+    margin: 15px auto;
+    border-bottom: 3px solid var(--main_color);
+}
+
+#contact form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 50px;
+}
+
+#contact form #col1 input {
+    padding: 15px 45px;
+    margin: 15px;
+    background: #303030;
+    color: var(--main_color);
+    border: none;
+}
+
+#contact form textarea {
+    width: 750px;
+    height: 120px;
+}
+
+#contact form #col2 input {
+    border: none;
+    color: var(--main_color);
+    background: rgb(48, 48, 48);
+    width: 100%;
+    margin-top: 45px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#contact form #col2 input:hover {
+    color: white;
+    background: rgba(48, 48, 48, 0.8);
+}
+
+#col1, #col2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 840px) {
+    nav .fas {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    nav {
+        justify-content: center;
+    }
+
+    nav span {
+        display: none;
+    }
+}
