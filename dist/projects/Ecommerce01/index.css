@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-size;
+    font-family: 'Roboto', sans-serif;
+    line-height: 27px;
+    font-size: 14px;
+}
+
+:root {
+    --hover_color: rgb(255, 83, 83);
+    --hover_font: #0056b3;
+    --footer_color: #e9e2d8;
+    --hover_nav: #f5f5f5;
+    --big_img_font: 'Dancing Script', cursive;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 25px 0;
+}
+
+nav img {
+    height: 100%;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-transform: uppercase;
+    color: black;
+    text-decoration: none;
+    margin: 20px;
+    font-size: 13px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 500ms;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--hover_color);
+}
+
+.right-nav-icons a {
+    color: black;
+    transition: color 500ms;
+    margin-right: 18px;
+    position: relative;
+}
+
+.right-nav-icons i {
+    font-size: 18px;
+}
+
+.right-nav-icons a:nth-child(2)::before,
+.right-nav-icons a:nth-child(3)::before {
+    position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+    background: red;
+    top: -20px;
+    right: -12px;
+    border-radius: 50%;
+}
+
+.right-nav-icons a:nth-child(2)::before {
+    content: '9';
+}
+
+.right-nav-icons a:nth-child(3)::before {
+    content: '15';
+}
+
+
+
+
+
+
+
+
+
+
+
+header {
+    height: 540px;
+    background: url(ecommerceimg/bg-1.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.header-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.header-text, .header-img {
+    max-width: 50%;
+    padding: 0 15px;
+}
+
+.header-text {
+    max-width: 450px;
+    text-align: center;
+}
+
+.header-text h5 {
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.header-text h1 {
+    font-size: 65px;
+    line-height: 65px;
+    margin-bottom: 50px;
+}
+
+.header-text button {
+    border: none;
+    border-radius: 3px;
+    background: var(--hover_color);
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 5px;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: 350ms ease-in-out;
+}
+
+.header-text button:hover {
+    color: var(--hover_font);
+    background: #fff;
+}
+
+.header-img {
+    height: 100%;
+}
+
+.header-img img {
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+main, .second-main, .third-main {
+    width: 100%;
+    text-align: center;
+    margin: 50px 0;
+}
+
+main h1, .second-main h1, .third-main h1 {
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
+.product-container {
+    width: 80%;
+    height: 600px;
+    margin: 50px auto;
+    display: flex;
+}
+
+.inside-product-container {
+    width: 100%;
+    margin: 0 10px;
+}
+
+.inside-product-container .p01 {
+    font-size: 16px;
+}
+
+.inside-product-container ul {
+    list-style: none;
+}
+
+.inside-product-container li {
+    display: inline;
+}
+
+.inside-product-container a {
+    color: var(--hover_color);
+}
+
+.inside-product-container .p03 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+
+
+
+
+.second-header {
+    height: 540px;
+    background: #eae2d8;
+    overflow: hidden;
+}
+
+.second-header .header-text h5 {
+    font-family: "Dancing Script", cursive;
+    font-size: 64px;
+}
+
+.second-header .header-text h1 {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.second-main .inside-product-container {
+    margin: 0;
+}
+
+.second-main .product-container {
+    height: 450px;
+}
+
+.details, .social {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.details-container, .social-container {
+    display: flex;
+    margin: 100px 0;
+    justify-content: center;
+}
+
+.details .card {
+    padding: 40px;
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-right: 25px;
+    text-align: center;
+    width: 350px;
+}
+
+.details .card i {
+    color: var(--hover_color);
+    font-size: 35px;
+}
+
+.details .card h4 {
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.details .card p {
+    font-style: italic;
+    font-size: 12px;
+}
+
+.third-main .product-container {
+    height: 400px;
+}
+
+.social .card {
+    margin: 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+.social .card:hover::before {
+    position: absolute;
+    content: 'IG';
+    font-size: 45px;
+    color: white;
+    width: 100%;
+    height: 96%;
+    background: rgba(255, 83, 83, 0.4);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+footer {
+    background: var(--footer_color);
+}
+
+.footer-container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-cat {
+    width: 30%;
+    margin: 50px 0;
+}
+
+.footer-cat ul {
+    list-style: none;
+}
+
+.footer-cat h3 {
+    margin: 20px;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.footer-cat a {
+    color: #888;
+    text-align: left;
+    text-decoration: none;
+    transition: 250ms linear;
+}
+
+.footer-cat a:hover {
+    color: var(--hover_color);
+}
+
+.copyright {
+    width: 100;
+    padding: 10px 0;
+    text-align: center;
+    background: var(--footer_color);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    color: #888;
+}
