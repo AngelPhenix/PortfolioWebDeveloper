@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Your Page Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #paper {
+            height: 100%;
+            width: 100%;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="paper"></canvas>
+    
+    <script>
+        const paper = document.querySelector("#paper");
+        const pen = paper.getContext("2d");
+        let startTime = new Date().getTime();
+
+        const calculateNextImpactTime = (currentImpactTime, velocity) => {
+            return currentImpactTime + (Math.PI / velocity) * 1000;
+        }
+
+        const determineOpacity = (currentTime, lastImpactTime, baseOpacity, maxOpacity, duration) => {
+          return calculateDynamicOpacity(currentTime, lastImpactTime, baseOpacity, maxOpacity, duration);
+        }
+
+        const calculateDynamicOpacity = (currentTime, lastImpactTime, baseOpacity, maxOpacity, duration) => {
+            const timeSinceImpact = currentTime - lastImpactTime;
+            const percentage = Math.min(timeSinceImpact / duration, 1);
+            const opacityDelta = maxOpacity - baseOpacity;
+          
+            return maxOpacity - (opacityDelta * percentage);
+        }
+
+        // const arcs = ["#687fb7","#7188bb","#758bbc","#8297c1","#899ec4","#8fa4c7","#9eb2cd","#a7bbd1","#abb8cf","#b0b5cd","#b4b3cb","#b9b0c9","#bdaec7","#c0acc5","#c5afc8","#cab3cb","#ceb6cd","#d3b9d0","#d7bcd2","#dbbfd4","#dfc2d7"]
+
+        const arcs = ["#CC2B5E","#C82C60","#C32D62","#BF2D64","#BB2E66","#B62F69","#B2306B","#AE306D","#A9316F","#A53271","#A13373","#9C3375","#983477","#933579","#8F367B","#8B367E","#863780","#823882","#7E3984","#793986","#753A88"].map((color, index) => {
+                const newIndex = index + 1;
+                const audio = new Audio('Sounds/sound' + newIndex + '.mp3');
+
+                audio.volume = 0.02;
+
+                const numberOfLoops = 2 * Math.PI * (60 - index);
+                const velocity = numberOfLoops / 600;
+                const lastImpactTime = 0;
+
+                return {
+                    color,
+                    audio,
+                    nextImpactTime: calculateNextImpactTime(startTime, velocity),
+                    velocity,
+                    lastImpactTime
+                }
+            });
+
+        const draw = () => {
+            paper.width = paper.clientWidth;
+            paper.height = paper.clientHeight;
+
+            const currentTime = new Date().getTime();
+            const elapsedTime = (currentTime - startTime) / 1000;
+
+            const start = {
+                x: paper.width * 0.1,
+                y: paper.height * 0.9
+            }
+
+            const end = {
+                x: paper.width * 0.9,
+                y: paper.height * 0.9
+            }
+
+            const center = {
+                x: paper.width * 0.5,
+                y: paper.height * 0.9
+            }
+
+            const maxAngle = 2 * Math.PI;
+            const length = end.x - start.x;
+            const arcRadius = length * 0.05;
+
+            // Settings pour le pen
+            pen.lineWidth = 6;
+
+            const initialArcRadius = length * 0.05;
+            const circleRadius = length * 0.006
+            const spacing = (length / 2 - initialArcRadius) / arcs.length;
+
+            // On trace le premier trait
+            pen.beginPath();
+            pen.moveTo(start.x, start.y);
+            pen.lineTo(end.x, end.y)
+            pen.stroke();
+
+            arcs.forEach((arc, index) => {
+                const distance = Math.PI + (elapsedTime * arc.velocity);
+                const modDistance = distance % maxAngle;
+                let adjustedDistance = modDistance >= Math.PI ? modDistance : maxAngle - modDistance;
+                const arcRadius = initialArcRadius + (index * spacing)
+                const x = center.x + arcRadius * Math.cos(adjustedDistance)
+                const y = center.y + arcRadius * Math.sin(adjustedDistance)
+                // Draw arc
+                // Draw circle
+                if (currentTime >= arc.nextImpactTime) {
+                    arc.audio.play();
+                    arc.lastImpactTime = arc.nextImpactTime;
+                    arc.nextImpactTime = calculateNextImpactTime(arc.nextImpactTime, arc.velocity);
+                }
+
+                // On trace un premier arc
+                pen.beginPath();
+                pen.globalAlpha = determineOpacity(currentTime, arc.lastImpactTime, 0.25, 0.85, 1000);
+                pen.strokeStyle = arc.color;
+                pen.arc(center.x, center.y, arcRadius, Math.PI, 2 * Math.PI);
+                pen.stroke();
+
+                // On trace la "boule" qui va sur le premier arc
+                pen.globalAlpha = determineOpacity(currentTime, arc.lastImpactTime, 0.10, 0.75, 3000);
+                pen.fillStyle = "white";
+                pen.beginPath();
+                pen.arc(x, y, circleRadius, 0, 2 * Math.PI);
+                pen.fill();
+            });
+            requestAnimationFrame(draw)
+        }
+
+
+        draw();
+    </script>
+</body>
+</html>
