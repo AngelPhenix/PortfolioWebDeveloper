@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container" id="container">
+
+        <div class="form-container sign-up">
+            <form action="">
+                <h1>Créer mon compte</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <span>Ou utiliser un email pour s'enregistrer</span>
+                <input type="text" placeholder="Pseudo">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button>S'enregistrer</button>
+            </form>
+        </div>
+
+
+        <div class="form-container sign-in">
+            <form action="">
+                <h1>Connexion</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <span>Ou utiliser un compte déjà existant</span>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <a href="#" id="forgotten_password">Mot de passe oublié</a>
+                <button>Se connecter</button>
+            </form>
+        </div>
+
+
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Ravi de vous revoir !</h1>
+                    <p>Entrez vos informations personnelles pour utiliser toutes les features de l'application</p>
+                    <button class="hidden" id="login">Se connecter</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Bonjour !</h1>
+                    <p>Enregistrez vous avec vos informations personnelles pour utiliser toutes les features de l'application</p>
+                    <button class="hidden" id="register">S'enregistrer</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
