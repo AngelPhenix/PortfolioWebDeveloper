@@ -1,0 +1,222 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: ShopifySans, Helvetica, Arial, sans-serif;
+}
+
+#main {
+	background: #212326;
+	max-width: 1600px;
+	margin: 0 auto;
+}
+
+/** ===================== HEADER ===================== **/
+
+header {
+	display: flex;
+	justify-content: center;
+}
+
+.shopify_icon_min {
+	display: block;
+	width: 121px;
+	padding: 30px 0px 60px;
+	text-align: center;
+}
+
+/** ===================== TITLE + INPUT ===================== **/
+
+#title {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#title h1 {
+	font-size: 100px;
+	color: #ffffff;
+	text-align: center;
+	padding-bottom: 35px;
+}
+
+#input_button {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 25px;
+}
+
+#input_button input[type=text]{
+	width: 385px;
+	border: 0px;
+	font-size: 24px;
+	padding: 10px 15px;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+#input_button input[type=text]:focus {
+	outline: none;
+}
+
+#input_button a {
+	display: block;
+	padding: 16px 29px;
+	margin-left: 25px;
+	text-decoration: none;
+	color: #000000;
+	border-radius: 5px;
+	background: #b2e0bc;
+	font-weight: 700;
+	vertical-align: middle;
+}
+
+#input_btn_txt {
+	margin: 0 auto;
+	font-size: 12px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 18px;
+}
+
+/** ===================== MAIN CONTENT (CSS-GRID) ===================== **/
+
+#main_body_title {
+	padding-top: 95px;
+	text-align: center;
+	color: #ffffff;
+	font-size: 44px;
+	font-weight: 600;
+}
+
+#main_body_grid {
+	margin: 0 auto;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 33% 33% 33%;
+	max-width: 95%;
+	padding: 50px 0px;
+	color: #ffffff;
+}
+
+.item img {
+	width: 100%;
+}
+
+.item {
+	padding: 0px 35px;
+}
+
+.item_inside {
+	display: flex;
+	align-items: center;
+	padding-bottom: 25px;
+	line-height: 22px;
+}
+
+.item_inside_num {
+	font-size: 48px;
+	color: #B2E0BC;
+}
+
+.item_inside_p {
+	font-size: 18px;
+	line-height: 1.5;
+	padding-left: 10px;
+	vertical-align: top;
+}
+
+/** ===================== QUOTE & SUPPORT ===================== **/
+#quote_support {
+	background: rgb(255,255,255);
+	background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(235,255,223,1) 100%);
+	padding: 35px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#quote_support img {
+	width: 110px;
+	padding-top: 15px;
+}
+
+#quote_support .first_image {
+	padding-top: 50px;
+}
+
+#quote_support .last_image {
+	padding-bottom: 110px;
+}
+
+#quote_support h3 {
+	font-size: 34px;
+	padding: 25px 150px 45px 150px;
+	text-align: center;
+}
+
+#quote_support hr {
+	height: 2px;
+	width: 80%;
+}
+
+#quote_support h4 {
+	font-size: 32px;
+	padding: 90px 150px 80px 150px;
+	text-align: center;
+}
+
+#support {
+	display: flex;
+	width: 80%;
+	justify-content: space-between;
+	padding-bottom: 75px;
+}
+
+#support_one, #support_two, #support_three, #support_four {
+	width: 22%;
+}
+
+#support i {
+	padding-bottom: 30px;
+}
+
+#support h5 {
+	padding: 5px 0px 10px 0px;
+	font-size: 14px;
+}
+
+#support p {
+	color: #777777;
+	padding-right: 10px;
+	font-size: 13px;
+}
+
+
+
+/** ===================== FOOTER ===================== **/
+footer {
+	padding-bottom: 120px;
+}
+
+footer h1 {
+	font-size: 32px;
+	color: #ffffff;
+	text-align: center;
+	padding: 120px 0px 35px 0px;
+}
+
+footer p {
+	text-align: center;
+	color: #ffffff;
+	font-style: italic;
+	vertical-align: middle;
+	font-size: 18px;
+	padding-bottom: 25px;
+}
+
+.shopify_icon_min_2 {
+	width: 121px;
+	padding: 0px 0px 10px 10px;
+	vertical-align: middle;
+}
