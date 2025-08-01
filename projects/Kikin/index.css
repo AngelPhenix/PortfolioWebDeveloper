@@ -1,0 +1,899 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+/* 
+*  CSS PARTS :
+*  - NAVBAR
+*  - FIRST_SECTION
+*  - STICKER_SECTION
+*/
+
+
+/* DESIGN ENTRE 768PX ET 990PX */
+:root {
+    --green: #122315;
+    --neon-100: #55DD4A;
+    --neon-80: #77e46e;
+    --off-white: #f3ede4;
+    --stroke-30-light: #f3f0ec4d;
+    --hov-second-btn: #202f22;
+    --turquoise-100: #73d3eb;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+/****** START: NAVBAR ******/
+.navbar {
+    background-color: var(--green);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    padding: 18px 20px;
+}
+
+.logo-desktop {
+    width: 100px;
+}
+
+.container-desktop .navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-desktop .navbar-wrapper .logo-container {
+    width: 200px;
+}
+
+.container-mobile {
+    display: block;
+}
+
+.container-desktop {
+    display: none;
+}
+
+.unstylized-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-item {
+    padding: 0px 15px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.nav-link, .menu-btn {
+    text-decoration: none;
+    color: white;
+}
+    
+.nav-link:hover {
+    color: var(--off-white);
+}
+
+.btn-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-secondary {
+    padding: 12px 16px;
+    font-size: 14px;
+    border: 1px solid var(--stroke-30-light);
+    background-color: var(--green);
+    color: white;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.btn-secondary:hover {
+    background-color: var(--hov-second-btn);
+}
+
+.btn-primary {
+    padding: 10px 16px;
+    font-size: 14px;
+    border: 3px solid #0000;
+    background-color: var(--neon-100);
+    color: black;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+.btn-primary:hover {
+    background-color: var(--neon-80);
+}
+
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo-mobile {
+    width: 92px;
+    margin-left: 40px;
+    display: inline-block;
+}
+
+.logo-menu-button {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--neon-100);
+    border-radius: 20px;
+}
+
+.logo-menu-button:hover {
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    list-style: none;
+    left: 0;
+    background-color: var(--green);
+    width: 100%;
+    transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    max-height: 0px;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.nav-links li {
+    font-size: 14px;
+    padding: 10px 0px;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+}
+
+.nav-links li:first-child {
+    padding-top: 20px;
+}
+
+.nav-links li:last-child {
+    padding-bottom: 30px;
+}
+
+.nav-active {
+    max-height: 300px;
+}
+/****** END: NAVBAR ******/
+
+
+
+/****** START: FIRST SECTION ******/
+.headings {
+    text-align: center;
+    background-color: var(--green);
+    position: relative;
+    padding-top: 15vh;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-white {
+    color: var(--off-white);
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    font-weight: 900;
+    line-height: 0.9em;
+    font-size: 13vw;
+}
+
+.hero-green {
+    color: var(--neon-100);
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    font-weight: 900;
+    line-height: 0.8em;
+    font-size: 13vw;
+    padding-bottom: 10px;
+}
+
+.heading-two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 65vw;
+    margin: 0 auto;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+    margin-bottom: -5vh;
+}
+
+.heading-two p {
+    color: var(--off-white);
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 400;
+}
+
+.btn-heading {
+    padding: 15px 25px;
+}
+
+.img-desktop-heading {
+    display: none;
+}
+
+.heading-img {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.img-mobile-heading {
+    width: 90vw;
+    transform: scale(1.60);
+    margin-top: -5px;
+}
+/****** END: FIRST_SECTION ******/
+
+
+
+/****** START: STICKER_SECTION ******/
+.stickers {
+    background-color: var(--off-white);
+    padding: 150px 0px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stickers-heading {
+    max-width: 60vw;
+    margin: 0 auto;
+}
+
+.heading-h2 {
+    color: var(--green);
+    text-align: center;
+    font-size: 7vw;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -2.5px;
+    line-height: 0.8em;
+}
+
+.sticker-heading-two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 65vw;
+    margin: 0 auto;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.sticker-heading-two p {
+    color: var(--green);
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    font-weight: 400;
+}
+
+.sticker-logo {
+    position: absolute;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+}
+
+.change_the_world {
+    top: 45px;
+}
+
+.make_business_do_good {
+    top: 20px;
+    right: 40px;
+}
+
+.borrow_wisely {
+    top: 200px;
+    right: -25px;
+}
+
+.put_planet_first {
+    bottom: 50px;
+    left: 30px;
+}
+
+.work_together {
+    right: 35px;
+    bottom: 80px;
+}
+/****** END: STICKER_SECTION ******/
+
+
+
+/****** START: BENEFITS ******/
+.main-benefits {
+    padding: 0px 40px 120px;
+    background-color: var(--off-white);
+}
+
+.benefits-separator {
+    padding: 24px 0px;
+    border-bottom: 1px solid #1223157a;
+}
+
+.benefit-texts {
+    padding-bottom: 20px;
+}
+
+.benefits-pastille {
+    background-color: var(--neon-100);
+    width: 32px;
+    height: 32px;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-weight: 800;
+    line-height: 17px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.heading-h4 {
+    color: var(--green);
+    font-size: 5vw;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -1.5px;
+    line-height: 85%;
+    padding-bottom: 16px;
+}
+
+.benefit-img img {
+    width: 100%;
+}
+/****** END: BENEFITS ******/
+
+
+
+/****** START: WHO WE ARE ******/
+.wwa-main-one {
+    padding: 40px;
+    background-color: var(--turquoise-100);
+}
+
+.wwa-img-block {
+    background-image: url(img/wwa_bg.webp);
+    height: 700px;
+    background-position: 50%;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wwa-h2-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 24px 24px 0px 0px;
+}
+
+.wwa-h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8vw;
+    letter-spacing: -3px;
+    font-weight: 800;
+    line-height: 0.8em;
+    text-transform: uppercase;
+    color: var(--off-white);
+}
+
+.wwa-p-container {
+    padding: 0px 0px 24px 24px;
+    width: 32.5em;
+    color: var(--off-white);
+}
+/****** END: WHO WE ARE ******/
+
+
+
+/****** START: INVOICE SECTION ******/
+.invoice-section {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: var(--turquoise-100);
+    display: flex;
+    flex-direction: row;
+}
+
+.invoice-containers {
+    padding: 32px 0px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+    width: 33.3333%
+}
+
+.invoice-imgs {
+    width: 32px;
+}
+
+.invoice-h6-container {
+    padding: 40px 0px 20px;
+}
+
+.central {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.invoice-h6 {
+    font-size: 2vw;
+    letter-spacing: -1.8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 85%;
+    color: var(--green);
+}
+/****** END: INVOICE SECTION ******/
+
+
+
+/****** START: CAROUSEL SECTION ******/
+.carousel-section {
+    padding: 40px 0px;
+    overflow: hidden;
+    background-color: var(--turquoise-100);
+}
+
+.carousel {
+    grid-column-gap: 70px;
+    grid-row-gap: 70px;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: max-content;
+    height: 55px;
+    overflow: visible;
+}
+
+.logo-carousel {
+    display: block;
+    height: 39px;
+}
+
+.logo-carousel img {
+    display: block;
+}
+/****** END: CAROUSEL SECTION ******/
+
+
+/* ENTRE 480PX ET 768PX */
+@media screen and (max-width: 768px) {
+    .wwa-img-block {
+        height: 500px;
+    }
+
+    .wwa-h2 {
+        font-size: 10vw;
+    }
+
+    .wwa-p-container {
+        width: 95%;
+    }
+
+    .invoice-section {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        background-color: var(--turquoise-100);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .invoice-containers {
+        padding: 32px 0px 0px 20px;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid black;
+        width: 100%
+    }
+
+    .invoice-imgs {
+        width: 32px;
+    }
+
+    .invoice-h6-container {
+        padding: 40px 0px;
+    }
+
+    .invoice-h6 {
+        font-size: 5vw;
+        letter-spacing: -1.5px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 85%;
+        color: var(--green);
+    }
+
+    .central {
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    .carousel-section {
+        padding: 30px 0px;
+    }
+}
+
+
+/* DISPLAY EN DESSOUS DE 480PX (MOBILE) */
+@media screen and (max-width: 480px) {
+    .headings {
+        padding-top: 10vh;
+    }
+
+    .hero-green, .hero-white {
+        font-size: 16vw;
+    }
+
+    .heading-two {
+        max-width: 91vw;
+    }
+
+    .stickers-heading {
+        max-width: 90vw;
+    }
+
+    .sticker-heading-two {
+        max-width: 85vw;
+    }
+
+    .heading-h2 {
+        font-size: 13vw;
+    }
+
+    .sticker-logo {
+        width: 110px;
+        height: 110px;
+    }
+
+    .change_the_world {
+        top: 40px;
+        left: -50px;
+    }
+
+    .make_business_do_good {
+        top: 60px;
+        right: -40px;
+    }
+
+    .put_planet_first {
+        bottom: 35px;
+        left: 10px;
+    }
+
+    .borrow_wisely {
+        top: 500px;
+        right: -50px;
+    }
+
+    .work_together {
+        right: 85px;
+        bottom: 0px;
+    }
+
+    .main-benefits {
+        padding: 0px 20px 60px;
+    }
+
+    .wwa-img-block {
+        height: 415px;
+        background-size: 830px;
+    }
+
+    .wwa-h2 {
+        font-size: 12vw;
+    }
+
+    .invoice-h6-container {
+        padding: 45px 0px 30px;
+    }
+}
+
+
+
+
+/* ENTRE 990PX ET 1440PX */
+@media screen and (min-width: 990px) {
+    .container-mobile {
+        display: none;
+    }
+    
+    .container-desktop {
+        display: block;
+    }
+
+    .logo-container {
+        margin: 0;
+    }    
+
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-white, .hero-green {
+        font-size: 10vw;
+    }
+    
+    .heading-two {
+        max-width: 38vw;
+    }
+    
+    .heading-two p {
+        font-size: 16px;
+    }
+
+    .img-desktop-heading {
+        width: 100vw;
+        margin-top: -140px;
+        display: block;
+    }
+
+    .img-mobile-heading, .heading-img {
+        display: none;
+    }
+    
+    .heading-h2 {
+        font-size: 6vw;
+    }
+    
+    .sticker-heading-two {
+        max-width: 39vw;
+    }
+    
+    .sticker-heading-two p {
+        font-weight: 500;
+        font-size: 16px;
+    }
+    
+    .sticker-logo {
+        width: 155px;
+        height: 155px;
+    }
+    
+    .change_the_world {
+        top: 100px;
+        left: -10px;
+    }
+    
+    .make_business_do_good {
+        top: 30px;
+        right: 50px;
+    }
+    
+    .borrow_wisely {
+        top: 250px;
+        right: -10px;
+    }
+    
+    .put_planet_first {
+        bottom: 70px;
+        left: 110px;
+    }
+    
+    .work_together {
+        bottom: 60px;
+        right: 130px;
+    }
+
+    .benefits-separator {
+        display: flex;
+    }
+
+    .benefit-texts {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50%;
+        padding-bottom: 0px;
+    }
+
+    .sub-benef {
+        width: 70%;
+    }
+
+    .heading-h4 {
+        font-size: 4vw;
+    }
+
+    .benefit-img {
+        width: 50%;
+    }
+
+    .wwa-h2 {
+        font-size: 7vw;
+    }
+
+    .wwa-p-container {
+        width: 30.4em;
+        padding-left: 40px;
+    }
+
+    .invoice-h6-container {
+        padding-bottom: 30px;
+    }
+}
+
+
+
+/* ENTRE 1440PX ET 1920PX WIDTH */
+@media screen and (min-width: 1440px) {
+    .navbar-container {
+        padding: 20px 40px;
+        position: relative;
+    }
+
+    .img-desktop-heading {
+        margin-top: -190px;
+    }
+
+    .stickers {
+        padding: 180px 0px;
+    }
+
+    .sticker-heading-two {
+        max-width: 40vw;
+    }
+
+    .sticker-logo {
+        width: 155px;
+        height: 155px;
+    }
+
+    .change_the_world {
+        top: 130px;
+        left: -6px;
+    }
+    
+    .make_business_do_good {
+        top: 75px;
+        right: 140px;
+    }
+    
+    .borrow_wisely {
+        top: 270px;
+        right: -8px;
+    }
+    
+    .put_planet_first {
+        bottom: 80px;
+        left: 270px;
+    }
+    
+    .work_together {
+        right: 185px;
+        bottom: 140px;
+    }
+
+    .benefit-p {
+        font-size: 22px;
+    }
+
+    .wwa-img-block {
+        height: 680px;
+    }
+
+    .wwa-p-container {
+        font-size: 16px;
+        width: 30em;
+    }
+
+    .invoice-h6-container {
+        padding-bottom: 40px;
+    }
+    
+    .invoice-h6 {
+        font-size: 2.4vw;
+        padding-right: 5px;
+    }
+
+    .carousel-section {
+        padding: 60px 0px;
+    }
+}
+
+
+/* APRES 1920PX INCLUS */
+@media screen and (min-width: 1920px) {
+    .logo-desktop {
+        width: 162px;
+    }
+
+    .stickers {
+        padding: 240px 0px;
+    }
+
+    .sticker-heading-two p {
+        font-size: 22px;
+    }
+
+    .sticker-logo {
+        width: 240px;
+        height: 240px;
+    }
+
+    .change_the_world {
+        top: 220px;
+        left: -7px;
+    }
+    
+    .make_business_do_good {
+        top: 100px;
+        right: 160px;
+    }
+    
+    .borrow_wisely {
+        top: 400px;
+        right: -23px;
+    }
+    
+    .put_planet_first {
+        bottom: 40px;
+        left: 260px;
+    }
+    
+    .work_together {
+        bottom: 40px;
+        right: 220px;
+    }
+
+    .wwa-p-container {
+        font-size: 22px;
+    }
+}
