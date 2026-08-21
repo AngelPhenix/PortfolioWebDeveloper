@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Chasse aux couleurs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent: #B5502C;
+    --accent-soft: rgba(181,80,44,0.18);
+    --bg: #121116;
+    --paper: #1B1A21;
+    --paper-raised: #232229;
+    --ink: #F3F1EC;
+    --ink-dim: #8E8B96;
+    --line: #34323C;
+    --good: #6FB98F;
+    --radius: 18px;
+  }
+  *{ box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    padding: 28px 16px 60px;
+  }
+  .app{ width:100%; max-width: 440px; }
+
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin: 0 0 6px 2px;
+  }
+  h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 2px;
+    letter-spacing: -0.01em;
+  }
+  .tagline{
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    margin: 0 0 22px 2px;
+  }
+
+  /* --- Color ticket --- */
+  .ticket{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+  }
+  .ticket.flip{ transform: rotateY(90deg); }
+  .swatch{
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background: var(--accent);
+    flex-shrink: 0;
+    box-shadow: 0 6px 18px -4px var(--accent-soft), inset 0 0 0 1px rgba(255,255,255,0.08);
+  }
+  .ticket-info{ flex: 1; min-width: 0; }
+  .ticket-label{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin: 0 0 3px;
+  }
+  .ticket-name{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 3px;
+  }
+  .ticket-hex{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-dim);
+    margin: 0;
+  }
+  .shuffle-btn{
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--paper-raised);
+    color: var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .shuffle-btn:active{ transform: scale(0.92); }
+  .shuffle-btn svg{ width: 19px; height: 19px; }
+
+  /* --- Grid --- */
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .cell{
+    position: relative;
+    border-radius: 12px;
+    border: 1.5px dashed var(--line);
+    background: var(--paper);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+  .cell::before{
+    content: "";
+    display: block;
+    padding-top: 100%; /* forces a 1:1 square from the cell's width — works on every browser, unlike aspect-ratio inside a grid on some Safari versions */
+  }
+  .cell:active{ border-color: var(--accent); }
+  .cell.filled{
+    border-style: solid;
+    border-color: var(--line);
+  }
+  .cell-content{
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cell img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: pop 0.3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes pop{
+    from{ opacity: 0; transform: scale(0.85); }
+    to{ opacity: 1; transform: scale(1); }
+  }
+  .cell-plus{
+    color: var(--line);
+    font-size: 22px;
+    font-weight: 300;
+  }
+  .target-dot{
+    position: absolute;
+    top: 6px; right: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.35);
+  }
+  /* --- Progress footer --- */
+  .progress-row{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-dim);
+  }
+  .progress-row strong{ color: var(--ink); font-size: 12.5px; }
+  .bar-track{
+    height: 6px;
+    border-radius: 4px;
+    background: var(--paper-raised);
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .bar-fill{
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width 0.4s ease, background 0.4s ease;
+  }
+
+  .banner{
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    font-size: 13px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+  .banner.show{ display: flex; }
+
+  .actions{
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+  }
+  .btn{
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .btn:active{ transform: scale(0.97); }
+  .btn.primary{
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #14120F;
+    font-weight: 600;
+  }
+  .btn.primary:disabled{
+    opacity: 0.4;
+    background: var(--paper-raised);
+    color: var(--ink-dim);
+    border-color: var(--line);
+  }
+
+  /* --- Modal --- */
+  .modal-overlay{
+    position: fixed; inset: 0;
+    background: rgba(10,9,12,0.82);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 50;
+  }
+  .modal-overlay.show{ display: flex; }
+  .modal{
+    width: 100%;
+    max-width: 440px;
+    background: var(--paper);
+    border-radius: 20px 20px 0 0;
+    padding: 18px 18px 26px;
+    animation: slideup 0.3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes slideup{
+    from{ transform: translateY(30px); opacity: 0; }
+    to{ transform: translateY(0); opacity: 1; }
+  }
+  .modal-preview{
+    width: 100%;
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--paper-raised);
+  }
+  .modal-preview::before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+  .modal-preview img{
+    position: absolute;
+    top: 0; left: 0;
+    width:100%; height:100%;
+    object-fit: cover;
+    display:block;
+  }
+  .modal-actions{
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  input[type="file"]{ display: none; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <p class="eyebrow">Cible du jour</p>
+  <h1>Chasse aux couleurs</h1>
+  <p class="tagline">Trouvez neuf choses de cette couleur en vous baladant.</p>
+
+  <div class="ticket" id="ticket">
+    <div class="swatch" id="swatch"></div>
+    <div class="ticket-info">
+      <p class="ticket-label">Couleur cible</p>
+      <p class="ticket-name" id="colorName">—</p>
+      <p class="ticket-hex" id="colorHex">—</p>
+    </div>
+    <button class="shuffle-btn" id="shuffleBtn" aria-label="Nouvelle couleur">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="23 4 23 10 17 10"></polyline>
+        <polyline points="1 20 1 14 7 14"></polyline>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="progress-row">
+    <span id="countLabel">0 / 9 cases</span>
+    <strong id="progressLabel">0 %</strong>
+  </div>
+  <div class="bar-track"><div class="bar-fill" id="barFill"></div></div>
+
+  <div class="banner" id="banner">🎯 Grille complète — belle chasse !</div>
+
+  <div class="actions">
+    <button class="btn" id="resetBtn">Réinitialiser</button>
+    <button class="btn primary" id="downloadBtn" disabled>Télécharger la mosaïque</button>
+  </div>
+</div>
+
+<input type="file" accept="image/*" capture="environment" id="cameraInput">
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-preview"><img id="modalImg" alt="Photo prise"></div>
+    <div class="modal-actions">
+      <button class="btn" id="retakeBtn">Reprendre</button>
+      <button class="btn primary" id="validateBtn">Valider</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const PALETTE = [
+    { name: "Rouge Brique",  hex: "#B5502C" },
+    { name: "Bleu Lagon",    hex: "#2F7A8C" },
+    { name: "Jaune Moutarde",hex: "#D9A441" },
+    { name: "Vert Sapin",    hex: "#2E5940" },
+    { name: "Orange Brûlé",  hex: "#C1603A" },
+    { name: "Rose Poudré",   hex: "#D9A9A0" },
+    { name: "Gris Ardoise",  hex: "#5B6470" },
+    { name: "Bleu Nuit",     hex: "#2B3A55" },
+    { name: "Vert Olive",    hex: "#6B7042" },
+    { name: "Jaune Citron",  hex: "#E8D64B" },
+    { name: "Violet Prune",  hex: "#5A3A5A" },
+    { name: "Marron Terre",  hex: "#6B4A34" },
+    { name: "Bleu Ciel",     hex: "#7EB5D6" },
+    { name: "Rouge Tomate",  hex: "#C1432A" },
+    { name: "Vert Menthe",   hex: "#7FBF9E" },
+    { name: "Rose Fuchsia",  hex: "#C24B8A" },
+    { name: "Turquoise",     hex: "#3FA6A0" },
+    { name: "Beige Sable",   hex: "#D8C6A8" },
+    { name: "Bordeaux",      hex: "#6B2737" },
+    { name: "Corail",        hex: "#E37B5B" },
+    { name: "Kaki",          hex: "#8A8B5C" },
+    { name: "Bleu Pétrole",  hex: "#1F4E5F" },
+    { name: "Lilas",         hex: "#9A85B0" },
+    { name: "Ocre",          hex: "#C08A3E" },
+  ];
+
+  let currentColor = null;
+  let cells = new Array(9).fill(null); // { dataURL }
+  let activeCellIndex = null;
+  let pendingDataURL = null;
+
+  const grid = document.getElementById('grid');
+  const swatch = document.getElementById('swatch');
+  const colorName = document.getElementById('colorName');
+  const colorHex = document.getElementById('colorHex');
+  const ticket = document.getElementById('ticket');
+  const countLabel = document.getElementById('countLabel');
+  const progressLabel = document.getElementById('progressLabel');
+  const barFill = document.getElementById('barFill');
+  const banner = document.getElementById('banner');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const cameraInput = document.getElementById('cameraInput');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalImg = document.getElementById('modalImg');
+
+  function hexToRgb(hex){
+    const v = hex.replace('#','');
+    return {
+      r: parseInt(v.substring(0,2),16),
+      g: parseInt(v.substring(2,4),16),
+      b: parseInt(v.substring(4,6),16),
+    };
+  }
+
+  function setAccent(hex){
+    const rgb = hexToRgb(hex);
+    document.documentElement.style.setProperty('--accent', hex);
+    document.documentElement.style.setProperty('--accent-soft', `rgba(${rgb.r},${rgb.g},${rgb.b},0.18)`);
+  }
+
+  function pickColor(){
+    let next;
+    do {
+      next = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+    } while (currentColor && next.hex === currentColor.hex && PALETTE.length > 1);
+    return next;
+  }
+
+  function renderTicket(){
+    swatch.style.background = currentColor.hex;
+    colorName.textContent = currentColor.name;
+    colorHex.textContent = currentColor.hex.toUpperCase();
+    setAccent(currentColor.hex);
+  }
+
+  function newColor(animated){
+    const doSwap = () => {
+      currentColor = pickColor();
+      renderTicket();
+      renderGrid();
+    };
+    if (!animated){ doSwap(); return; }
+    ticket.classList.add('flip');
+    setTimeout(() => {
+      doSwap();
+      ticket.classList.remove('flip');
+    }, 180);
+  }
+
+  function renderGrid(){
+    grid.innerHTML = '';
+    cells.forEach((cell, i) => {
+      const div = document.createElement('div');
+      div.className = 'cell' + (cell ? ' filled' : '');
+      const content = document.createElement('div');
+      content.className = 'cell-content';
+      if (cell){
+        const img = document.createElement('img');
+        img.src = cell.dataURL;
+        content.appendChild(img);
+      } else {
+        const dot = document.createElement('div');
+        dot.className = 'target-dot';
+        content.appendChild(dot);
+        const plus = document.createElement('span');
+        plus.className = 'cell-plus';
+        plus.textContent = '+';
+        content.appendChild(plus);
+      }
+      div.appendChild(content);
+      div.addEventListener('click', () => openCamera(i));
+      grid.appendChild(div);
+    });
+    updateProgress();
+  }
+
+  function updateProgress(){
+    const filled = cells.filter(Boolean);
+    const pct = Math.round((filled.length / 9) * 100);
+    countLabel.textContent = `${filled.length} / 9 cases`;
+    progressLabel.textContent = pct + ' %';
+    barFill.style.width = pct + '%';
+    banner.classList.toggle('show', filled.length === 9);
+    downloadBtn.disabled = filled.length === 0;
+  }
+
+  function openCamera(index){
+    activeCellIndex = index;
+    cameraInput.value = '';
+    cameraInput.click();
+  }
+
+  cameraInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      pendingDataURL = ev.target.result;
+      showModal(pendingDataURL);
+    };
+    reader.readAsDataURL(file);
+  });
+
+  function showModal(dataURL){
+    modalImg.src = dataURL;
+    modalOverlay.classList.add('show');
+  }
+
+  function closeModal(){
+    modalOverlay.classList.remove('show');
+  }
+
+  document.getElementById('retakeBtn').addEventListener('click', () => {
+    closeModal();
+    openCamera(activeCellIndex);
+  });
+
+  document.getElementById('validateBtn').addEventListener('click', () => {
+    cells[activeCellIndex] = { dataURL: pendingDataURL };
+    closeModal();
+    renderGrid();
+  });
+
+  document.getElementById('shuffleBtn').addEventListener('click', () => newColor(true));
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    if (cells.some(Boolean) && !confirm('Effacer les 9 photos de cette partie ?')) return;
+    cells = new Array(9).fill(null);
+    renderGrid();
+  });
+
+  downloadBtn.addEventListener('click', () => {
+    const filled = cells.filter(Boolean);
+    if (filled.length === 0) return;
+    const tile = 320;
+    const canvas = document.createElement('canvas');
+    canvas.width = tile * 3;
+    canvas.height = tile * 3;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#121116';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    let loaded = 0;
+    const total = filled.length;
+    cells.forEach((cell, i) => {
+      if (!cell) return;
+      const img = new Image();
+      img.onload = () => {
+        const col = i % 3, row = Math.floor(i / 3);
+        drawCover(ctx, img, col * tile, row * tile, tile, tile);
+        loaded++;
+        if (loaded === total){
+          const link = document.createElement('a');
+          link.download = `mosaique-${currentColor.name.toLowerCase().replace(/\s+/g,'-')}.png`;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        }
+      };
+      img.src = cell.dataURL;
+    });
+  });
+
+  function drawCover(ctx, img, x, y, w, h){
+    // Clip to the exact tile bounds first, so a portrait or landscape
+    // photo never overflows into the neighboring tile — every tile in
+    // the mosaic ends up exactly w×h, no matter the source orientation.
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(x, y, w, h);
+    ctx.clip();
+    const ratio = Math.max(w / img.width, h / img.height);
+    const nw = img.width * ratio, nh = img.height * ratio;
+    const nx = x + (w - nw) / 2, ny = y + (h - nh) / 2;
+    ctx.drawImage(img, nx, ny, nw, nh);
+    ctx.restore();
+  }
+
+  // init
+  newColor(false);
+</script>
+
+</body>
+</html>
