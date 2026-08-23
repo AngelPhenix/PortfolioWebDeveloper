@@ -289,3 +289,18 @@ main {
 .text-game {
   color: #c34d57;
 }
+
+.text-laravel {
+  color: #ff2d20; /* Laravel red */
+}
+
+.cred {
+  cursor: default;
+  text-align: center;
+  background: #fc5b52;
+}
+.cred:hover {
+  background: inherit;
+  color: inherit;
+  background: #ff2d20;
+}
