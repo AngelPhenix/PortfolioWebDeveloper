@@ -2,22 +2,77 @@
 <html>
 <head>
 	<title>Premier Site Canvas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
 		* {
 			margin: 0px;
+			box-sizing: border-box;
 		}
 
 		body {
-			overflow: hidden;
+			background-color: #111;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
 		}
 
-/*		canvas {
-			background-color: black;
-		}*/
+		.container {
+			display: flex;
+			align-items: center;
+			gap: 40px;
+			max-width: 1100px;
+		}
+
+		canvas {
+			width: 100%;
+			max-width: 580px; /* Agrandit le carré sur desktop */
+			height: auto;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+			border-radius: 4px;
+		}
+
+		.explanation {
+			max-width: 350px;
+		}
+
+		.explanation h2 {
+			margin-bottom: 15px;
+			font-size: 1.5rem;
+			color: #4da6ff;
+		}
+
+		.explanation p {
+			line-height: 1.6;
+			font-size: 0.95rem;
+			color: #ccc;
+		}
+
+		/* Version mobile / petits écrans */
+		@media (max-width: 768px) {
+			.container {
+				flex-direction: column;
+				text-align: center;
+				gap: 25px;
+			}
+
+			body {
+				overflow: auto;
+			}
+		}
 	</style>
 </head>
 <body>
-	<canvas></canvas>
+	<div class="container">
+		<canvas></canvas>
+		<div class="explanation">
+			<h2>La Mosaïque de Pi</h2>
+			<p>Ce script transforme les décimales de Pi en une grille visuelle. Chaque bloc de couleur représente un chiffre : le noir pour le 0, un dégradé dynamique (généré aléatoirement à chaque actualisation) pour les chiffres de 1 à 8, et le blanc pour le 9.</p>
+		</div>
+	</div>
 	<script src="js.js"></script>
 </body>
 </html>

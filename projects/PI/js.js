@@ -10,6 +10,9 @@ var iteration = 0;
 canvas.width = 700;
 canvas.height = 700;
 
+// Génère une couleur de base aléatoire (entre 0 et 360) à chaque chargement
+var randomHue = Math.floor(Math.random() * 360);
+
 function init(){
 	var h = 7;
 	var w = 7;
@@ -19,7 +22,6 @@ function init(){
 			iteration++;
 			var digit = digitsOfPi.charAt(index);
 			var color = "";
-			var hue = 360;
 			var saturation = 75;
 			var luminosity = 50;
 
@@ -28,35 +30,22 @@ function init(){
 					color = 'hsl(360, 100%, 0%)';
 					break;
 				case '1':
-					color = 'hsl('+hue/8*digit+','+saturation+'%,' +luminosity+'%)';
-					break;
 				case '2':
-					color = 'hsl('+hue/8*digit+','+saturation+'%,' +luminosity+'%)';
-					break;
 				case '3':
-					color = 'hsl('+hue/8*digit+','+saturation+'%,' +luminosity+'%)';
-					break;
 				case '4':
-					color = 'hsl('+hue/8*digit+','+saturation+'%,' +luminosity+'%)';
-					break;
 				case '5':
-					color = 'hsl('+hue/8*digit+','+saturation+'%,' +luminosity+'%)';
-					break;
 				case '6':
-					color = 'hsl('+hue/8*digit+','+saturation+'%,' +luminosity+'%)';
-					break;
 				case '7':
-					color = 'hsl('+hue/8*digit+','+saturation+'%,' +luminosity+'%)';
-					break;
 				case '8':
-					color = 'hsl('+hue/8*digit+','+saturation+'%,' +luminosity+'%)';
+					// On combine la teinte aléatoire avec la valeur du chiffre
+					var calculatedHue = (randomHue + (digit * 30)) % 360;
+					color = 'hsl(' + calculatedHue + ',' + saturation + '%,' + luminosity + '%)';
 					break;
 				case '9':
 					color = 'hsl(360, 100%, 100%)';
 					break;
 			}
-			console.log("iteration = "+ iteration);
-			console.log("digit a l'iteration donnee = " +digit);
+			
 			c.beginPath();
 			c.fillStyle = color;
 			c.fillRect(x, y, w, h);
@@ -66,13 +55,5 @@ function init(){
 	}
 }
 
-// Fonction appelée à répétition permettant l'animation du canvas (Toutes les millisecondes)
-function animate() {
-	// On boucle l'animation afin qu'elle ne s'arrête jamais
-	requestAnimationFrame(animate);
-
-	c.clearRect(0, 0, innerWidth, innerHeight);
-}
-
+// On lance la fonction pour dessiner le motif directement au chargement
 init();
-// animate();
